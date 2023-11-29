@@ -2,13 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-:hover {
-  transition: 0.7s;
-}
-
 input {
   border-color: #d4d4d8;
   border-width: 2px;
   outline: none;
 }
-
