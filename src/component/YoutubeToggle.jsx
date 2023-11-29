@@ -3,10 +3,10 @@ import youtubeLogo from "./../assets/youtubelogo.svg";
 import { useNavContext } from "../context/NavContext";
 
 function YoutubeToggle() {
-  const { setIsExpand, mobileNav } = useNavContext();
+  const { setIsExpand } = useNavContext();
 
   return (
-    <div className={`flex gap-3 ${mobileNav && "px-3"}`}>
+    <div className={`flex gap-3 `}>
       <div
         className="p-1 sm:p-3 hover:bg-slate-100 rounded-full inline-block "
         onClick={() => setIsExpand((prev) => !prev)}

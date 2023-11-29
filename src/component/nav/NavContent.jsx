@@ -57,7 +57,7 @@ function NavContent({ isExpand, mobileNav }) {
         return (
           <li
             key={idx}
-            className={`flex px-5 py-2 items-center gap-6 hover:bg-zinc-200 rounded-lg ${
+            className={`flex px-5 py-2  active:bg-zinc-200 items-center gap-6 hover:bg-zinc-200 rounded-lg ${
               !isExpand && !mobileNav ? " flex-col gap-0  " : ""
             }`}
           >

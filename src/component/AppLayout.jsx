@@ -1,6 +1,6 @@
 import Feed from "./Feed";
 import Header from "./Header";
-import Nav from "./Nav";
+import Nav from "./nav/Nav";
 
 function AppLayout() {
   return (

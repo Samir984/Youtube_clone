@@ -33,7 +33,7 @@ function SearchBar() {
           type="text"
           name="query"
           placeholder="Search"
-          className="pl-10 pr-10 py-1 w-48  sm:w-80 lg:w-[480px] xl:w-[600px] max-[470px]:w-32 rounded-l-3xl focus:border-gray-400"
+          className="pl-10 pr-10  w-48  sm:w-80 lg:w-[480px] xl:w-[600px] max-[470px]:w-32 rounded-l-3xl focus:border-gray-400"
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
           onFocus={() => setSearchFoucs(true)}
@@ -54,7 +54,7 @@ function SearchBar() {
           </div>
         )}
         <button
-          className="p-3 bg-gray-100 rounded-r-3xl hover:bg-gray-200"
+          className="p-[12px] bg-gray-100 rounded-r-3xl hover:bg-gray-200"
           onClick={handelSubmitQuery}
         >
           <IoIosSearch size={24} fill="#666" />
