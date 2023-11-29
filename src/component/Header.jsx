@@ -1,23 +1,15 @@
-import { IoIosMenu } from "react-icons/io";
+
 import { RxCross1 } from "react-icons/rx";
-import youtubeLogo from "./../assets/youtubelogo.svg";
+
 import { IoIosSearch } from "react-icons/io";
 import UserAvatar from "./UserAvatar";
 import { useState } from "react";
-import { useNavContext } from "../context/NavContext";
+
+import YoutubeToggle from "./YoutubeToggle";
 function Header() {
-  const { setIsExpand } = useNavContext();
   return (
-    <div className="flex items-center px-[6px] sm:px-4 py-2 bg-white gap-3 justify-between sticky top-0 z-10">
-      <div className="flex gap-2">
-        <div
-          className="p-1 sm:p-3 hover:bg-slate-100 rounded-full inline-block "
-          onClick={() => setIsExpand((prev) => !prev)}
-        >
-          <IoIosMenu size={24} />
-        </div>
-        <img src={youtubeLogo} alt="youtubeLogo" className="w-24" />
-      </div>
+    <div className="flex items-center px-[12px] sm:px-4 py-2 bg-white gap-2 justify-between sticky top-0 z-10">
+      <YoutubeToggle/>
       <SearchBar />
       <UserAvatar />
     </div>
@@ -71,4 +63,7 @@ function SearchBar() {
     </form>
   );
 }
+
+
+
 export default Header;
