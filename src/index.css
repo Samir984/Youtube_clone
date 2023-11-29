@@ -1,8 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-* {
-  margin: o;
-  padding: 0;
-  box-sizing: border-box;
+
+input {
+  border-color: #d4d4d8;
+  border-width: 2px;
+  outline: none;
 }

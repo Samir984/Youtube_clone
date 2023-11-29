@@ -4,6 +4,7 @@ import AppFeed from "./pages/AppFeed";
 import VideoFeed from "./pages/VideoFeed";
 import SearchFeed from "./pages/SearchFeed";
 import PageNotFound from "./pages/PageNotFound";
+import { NavProvider } from "./context/NavContext";
 
 const router = createBrowserRouter([
   {
@@ -12,7 +13,6 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <AppFeed />,
-       
       },
       {
         path: "/search",
@@ -30,7 +30,11 @@ const router = createBrowserRouter([
   },
 ]);
 function App() {
-  return <RouterProvider router={router} />;
+  return (
+    <NavProvider>
+      <RouterProvider router={router} />;
+    </NavProvider>
+  );
 }
 
 export default App;

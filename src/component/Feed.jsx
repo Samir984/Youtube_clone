@@ -2,7 +2,7 @@ import { Outlet } from "react-router-dom";
 
 function Feed() {
   return (
-    <div>
+    <div className="grow bg-red-300">
       <Outlet />
     </div>
   );
