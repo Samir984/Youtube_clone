@@ -5,6 +5,7 @@ import VideoFeed from "./pages/VideoFeed";
 import SearchFeed from "./pages/SearchFeed";
 import PageNotFound from "./pages/PageNotFound";
 import { NavProvider } from "./context/NavContext";
+import { VideoProvider } from "./context/VideoContext";
 
 const router = createBrowserRouter([
   {
@@ -32,7 +33,9 @@ const router = createBrowserRouter([
 function App() {
   return (
     <NavProvider>
-      <RouterProvider router={router} />;
+      <VideoProvider>
+        <RouterProvider router={router} />;
+      </VideoProvider>
     </NavProvider>
   );
 }

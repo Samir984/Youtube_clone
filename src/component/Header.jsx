@@ -1,17 +1,16 @@
-
 import { RxCross1 } from "react-icons/rx";
 
 import { IoIosSearch } from "react-icons/io";
-import UserAvatar from "./UserAvatar";
+import ChannelAvatar from "./ChannelAvatar";
 import { useState } from "react";
 
 import YoutubeToggle from "./YoutubeToggle";
 function Header() {
   return (
     <div className="flex items-center px-[12px] sm:px-4 py-2 bg-white gap-2 justify-between sticky top-0 z-10">
-      <YoutubeToggle/>
+      <YoutubeToggle />
       <SearchBar />
-      <UserAvatar />
+      <ChannelAvatar />
     </div>
   );
 }
@@ -63,7 +62,5 @@ function SearchBar() {
     </form>
   );
 }
-
-
 
 export default Header;
