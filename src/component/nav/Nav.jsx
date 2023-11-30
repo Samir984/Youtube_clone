@@ -10,7 +10,7 @@ function Nav() {
   if (!mobileNav) {
     return (
       <nav
-        className={`h-[93vh] overflow-y-scroll  ${isExpand ? "w-56" : "w-24"}`}
+        className={`h-[93vh] overflow-y-scroll shrink-0 ${isExpand ? "w-56" : "w-24"}`}
       >
         <NavContent isExpand={isExpand} mobileNav={mobileNav} />
       </nav>
@@ -25,9 +25,7 @@ function Nav() {
             isExpand ? "translate-x-0" : "-translate-x-full"
           } `}
         >
-          {/* <div className=" w-56 z-50 text-gray-900 "> */}
           <MobileNavContent isExpand={isExpand} mobileNav={mobileNav} />
-          {/* </div> */}
         </nav>
         <div
           className={`${
