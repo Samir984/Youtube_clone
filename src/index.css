@@ -11,3 +11,7 @@ input {
 .active li {
   background-color: #e4e4e7;
 }
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}

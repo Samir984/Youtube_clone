@@ -6,7 +6,7 @@ function AppLayout() {
   return (
     <div className="b">
       <Header />
-      <main className="flex gap-10">
+      <main className="flex gap-4">
         <Nav />
         <Feed />
       </main>

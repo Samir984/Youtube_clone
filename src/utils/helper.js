@@ -4,11 +4,14 @@ export function formatNumber(number) {
   } else if (number >= 1000) {
     return (number / 1000).toFixed(0) + "K";
   } else {
-    return number.toString();
+    return number?.toString();
   }
 }
 
 export function formatTime(seconds) {
+  if(seconds===null){
+    return 'Live'
+  }
     const hours = Math.floor(seconds / 3600);
     const minutes = Math.floor((seconds % 3600) / 60);
     const remainingSeconds = seconds % 60;

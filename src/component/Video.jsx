@@ -1,159 +1,77 @@
-import { NavLink } from "react-router-dom";
 import { formatNumber, formatTime } from "../utils/helper";
 import ChannelAvatar from "./ChannelAvatar";
 import { RiVerifiedBadgeFill } from "react-icons/ri";
+import { FaPlay } from "react-icons/fa";
+import { useEffect, useRef } from "react";
 
 /* eslint-disable react/prop-types */
-function Video({ video }) {
-  const videoDetail = video.video;
+function Video({ videoDetail }) {
+  const video = useRef();
+
+  useEffect(() => {
+    const handleHover = () => {
+      video.current.style.display = "block";
+    };
+
+    const handleLeave = () => {
+      video.current.style.display = "none";
+    };
+
+    video.current.parentElement.parentElement.addEventListener(
+      "mouseenter",
+      handleHover
+    );
+    video.current.parentElement.parentElement.addEventListener(
+      "mouseleave",
+      handleLeave
+    );
+  }, []);
 
   return (
-    <NavLink key={videoDetail.videoId}>
-      <div className="flex flex-col gap-1 bg-white">
-        <div className="rounded-xl overflow-hidden">
-          <img src={videoDetail.thumbnails[0].url} className="" />
+    <div className=" flex  flex-col gap-1 bg-white w-full max-w-[380px] ">
+      <div className="relative rounded-xl overflow-hidden  ">
+        <img src={videoDetail.thumbnails[0]?.url} className="w-full h-56" />
+        <div
+          className=" absolute    -translate-x-1/2 -translate-y-1/2 left-1/2 top-1/2 pl-[14px] pr-3 py-3  hidden  bg-slate-100  opacity-80 rounded-full "
+          ref={video}
+        >
+          <FaPlay size={24} fill="#525252" />
+        </div>
+      </div>
+
+      <div className="relative flex gap-3 ">
+        <div className="shrink-0">
+          <ChannelAvatar
+            img={videoDetail.author.avatar[0].url}
+            type="channelAvatar"
+          />
         </div>
 
-        <div className="relative flex gap-4">
-          <div className=" ">
-            <ChannelAvatar src={videoDetail.author.avatar[0].url} type='channelAvatar'/>
-          </div>
+        <div className="absolute text-sm rounded-xl bg-slate-100 p-1 right-6 -top-12">
+          {formatTime(videoDetail.lengthSeconds)}
+        </div>
+        <div className="flex flex-col">
+          <h1 className="text-[17px] font-semibold line-clamp-2 ">
+            {videoDetail.title}
+          </h1>
 
-          <div className="absolute text-sm rounded-xl bg-slate-100 p-1 right-6 -top-12">
-            {formatTime(videoDetail.lengthSeconds)}
-          </div>
-          <div className="flex flex-col">
-            <h1 className="text-[17px] font-semibold">{videoDetail.title}</h1>
-
-            <div className="text-sm text-gray-600 ">
-              <div className="flex">
-                {videoDetail.author.title}&nbsp;&nbsp;
-                {videoDetail.author.badges[0].type === "VERIFIED_CHANNEL" && (
-                  <RiVerifiedBadgeFill size={20} />
-                )}
-              </div>
-              <div>
-                {formatNumber(videoDetail.stats.views)} views{" "}
-                <span className="font-bold text-xl inline-block -translate-y-1">
-                  .
-                </span>{" "}
-                {videoDetail.publishedTimeText}
-              </div>
+          <div className="text-sm text-gray-600 ">
+            <div className="flex">
+              {videoDetail.author?.title}&nbsp;&nbsp;
+              {videoDetail.author?.badges[0]?.type === "VERIFIED_CHANNEL" && (
+                <RiVerifiedBadgeFill size={20} />
+              )}
+            </div>
+            <div>
+              {formatNumber(videoDetail.stats?.views)} views{" "}
+              <span className="font-bold text-xl inline-block -translate-y-1"></span>{" "}
+              {videoDetail.publishedTimeText}
             </div>
           </div>
         </div>
       </div>
-    </NavLink>
+    </div>
   );
 }
 
 export default Video;
-
-export const videos = {
-  contents: [
-    {
-      type: "video",
-      video: {
-        author: {
-          avatar: [
-            {
-              height: 68,
-              url: "https://yt3.ggpht.com/ytc/APkrFKaKwjIJcbOzfUfKB87wKrxTJssS11Udfe4EOC8ijg=s68-c-k-c0x00ffffff-no-rj",
-              width: 68,
-            },
-          ],
-          badges: [
-            {
-              text: "Verified",
-              type: "VERIFIED_CHANNEL",
-            },
-          ],
-          canonicalBaseUrl: "/@GugaFoods",
-          channelId: "UCfE5Cz44GlZVyoaYTHJbuZw",
-          title: "Guga Foods",
-        },
-        badges: [],
-        isLiveNow: false,
-        lengthSeconds: 1233,
-        movingThumbnails: [
-          {
-            height: 180,
-            url: "https://i.ytimg.com/an_webp/ksiskwlNNVs/mqdefault_6s.webp?du=3000&sqp=CLGcnqsG&rs=AOn4CLBzoyirqM6TTMPy3ZkRa0f_Ft-XRA",
-            width: 320,
-          },
-        ],
-        publishedTimeText: "10 days ago",
-        stats: {
-          views: 3331780,
-        },
-        thumbnails: [
-          {
-            height: 202,
-            url: "https://i.ytimg.com/vi/ksiskwlNNVs/hq720.jpg?sqp=-oaymwEcCOgCEMoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLD7mLPeb6Cr7OTVR-asIQ0Kh-_1CQ",
-            width: 360,
-          },
-          {
-            height: 404,
-            url: "https://i.ytimg.com/vi/ksiskwlNNVs/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLAIigbaeTNsJKlh0LCFipqAzxCPfg",
-            width: 720,
-          },
-        ],
-        title: "I Cooked 100 Years of Burgers",
-        videoId: "ksiskwlNNVs",
-      },
-    },
-    {
-      type: "video",
-      video: {
-        author: {
-          avatar: [
-            {
-              height: 68,
-              url: "https://yt3.ggpht.com/PLsX6LIg5JbMJR9v7eTD7nQOPmZN16_X7h_uACw5qeWLAewiNfasZFsxQ48Dn8wZ_4McKUPZSA=s68-c-k-c0x00ffffff-no-rj",
-              width: 68,
-            },
-          ],
-          badges: [
-            {
-              text: "Verified",
-              type: "VERIFIED_CHANNEL",
-            },
-          ],
-          canonicalBaseUrl: "/@failarmy",
-          channelId: "UCPDis9pjXuqyI7RYLJ-TTSA",
-          title: "FailArmy",
-        },
-        badges: [],
-        isLiveNow: false,
-        lengthSeconds: 721,
-        movingThumbnails: [
-          {
-            height: 180,
-            url: "https://i.ytimg.com/an_webp/4MJb60MzOag/mqdefault_6s.webp?du=3000&sqp=COCanqsG&rs=AOn4CLBOQH4Aaj1KDCTq-Bedvlwz6eGNEA",
-            width: 320,
-          },
-        ],
-        publishedTimeText: "8 months ago",
-        stats: {
-          views: 17349972,
-        },
-        thumbnails: [
-          {
-            height: 202,
-            url: "https://i.ytimg.com/vi/4MJb60MzOag/hq720.jpg?sqp=-oaymwEcCOgCEMoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBxp9ebx6r9Es6BaeGgZvpI3lmf6A",
-            width: 360,
-          },
-          {
-            height: 404,
-            url: "https://i.ytimg.com/vi/4MJb60MzOag/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLCKbKQai569ZnitmfvNFcfi9WC_NQ",
-            width: 720,
-          },
-        ],
-        title: "Idiots In Cars | Bad Driving Fails Compilation",
-        videoId: "4MJb60MzOag",
-      },
-    },
-  ],
-
-  // cursorNext: "NHFtRnNnS1FFaElQUmtWM2FHRjBYM1J2WDNkaGRHTm9HdHdSUTBKb05tOUJNVWhUTUU1b1RqSkdSVTVFV2xwVFZWSk9Xak5PU21OV1FsRlVWekZwVmtSc2MyUlZhRz"
-};
