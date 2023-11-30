@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 import { formatNumber, formatTime } from "../utils/helper";
 import ChannelAvatar from "./ChannelAvatar";
 import { RiVerifiedBadgeFill } from "react-icons/ri";
@@ -7,40 +8,42 @@ function Video({ video }) {
   const videoDetail = video.video;
 
   return (
-    <div className="flex flex-col gap-1 bg-white">
-      <div className="rounded-xl overflow-hidden">
-        <img src={videoDetail.thumbnails[0].url} className="" />
-      </div>
-
-      <div className="relative flex gap-4">
-        <div className=" ">
-          <ChannelAvatar src={videoDetail.author.avatar[0].url} />
+    <NavLink key={videoDetail.videoId}>
+      <div className="flex flex-col gap-1 bg-white">
+        <div className="rounded-xl overflow-hidden">
+          <img src={videoDetail.thumbnails[0].url} className="" />
         </div>
 
-        <div className="absolute text-sm rounded-xl bg-slate-100 p-1 right-6 -top-12">
-          {formatTime(videoDetail.lengthSeconds)}
-        </div>
-        <div className="flex flex-col">
-          <h1 className="text-[17px] font-semibold">{videoDetail.title}</h1>
+        <div className="relative flex gap-4">
+          <div className=" ">
+            <ChannelAvatar src={videoDetail.author.avatar[0].url} />
+          </div>
 
-          <div className="text-sm text-gray-600 ">
-            <div className="flex">
-              {videoDetail.author.title}&nbsp;&nbsp;
-              {videoDetail.author.badges[0].type === "VERIFIED_CHANNEL" && (
-                <RiVerifiedBadgeFill size={20} />
-              )}
-            </div>
-            <div>
-              {formatNumber(videoDetail.stats.views)} views{" "}
-              <span className="font-bold text-xl inline-block -translate-y-1">
-                .
-              </span>{" "}
-              {videoDetail.publishedTimeText}
+          <div className="absolute text-sm rounded-xl bg-slate-100 p-1 right-6 -top-12">
+            {formatTime(videoDetail.lengthSeconds)}
+          </div>
+          <div className="flex flex-col">
+            <h1 className="text-[17px] font-semibold">{videoDetail.title}</h1>
+
+            <div className="text-sm text-gray-600 ">
+              <div className="flex">
+                {videoDetail.author.title}&nbsp;&nbsp;
+                {videoDetail.author.badges[0].type === "VERIFIED_CHANNEL" && (
+                  <RiVerifiedBadgeFill size={20} />
+                )}
+              </div>
+              <div>
+                {formatNumber(videoDetail.stats.views)} views{" "}
+                <span className="font-bold text-xl inline-block -translate-y-1">
+                  .
+                </span>{" "}
+                {videoDetail.publishedTimeText}
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </NavLink>
   );
 }
 

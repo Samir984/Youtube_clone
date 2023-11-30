@@ -7,15 +7,16 @@ function VideoProvider({ children }) {
   const [loading, setLoading] = useState(false);
   const [query, setQuery] = useState("");
 
-  async function fetchData() {
-    setLoading(true);
-    const data = await fetchHomeData();
-    setLoading(false);
-    return data;
-  }
+
   console.log("d", loading);
   useEffect(() => {
     fetchData();
+    async function fetchData() {
+      setLoading(true);
+      const data = await fetchHomeData();
+      setLoading(false);
+      return data
+    }
   }, []);
 
   return (
