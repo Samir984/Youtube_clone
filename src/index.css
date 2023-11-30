@@ -7,3 +7,7 @@ input {
   border-width: 2px;
   outline: none;
 }
+
+.active li {
+  background-color: #e4e4e7;
+}
