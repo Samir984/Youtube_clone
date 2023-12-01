@@ -7,8 +7,8 @@ import { useEffect } from "react";
 function AppFeed() {
   const { isLoading, data, fetchData } = useVideo();
   useEffect(() => {
-    fetchData("home/?hl=en&gl=np");
-    console.log('appfeed')
+    fetchData("/home/?hl=en&gl=np");
+    console.log("appfeed");
   }, [fetchData]);
   if (isLoading) return <Loader />;
   if (data?.Error) return <Loader message={data.Error} />;

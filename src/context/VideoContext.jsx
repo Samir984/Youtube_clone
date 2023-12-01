@@ -1,26 +1,19 @@
 /* eslint-disable react/prop-types */
-import {
-  createContext,
-  useCallback,
-  useContext,
-  useEffect,
-  useState,
-} from "react";
+import { createContext, useCallback, useContext, useState } from "react";
 import { fetchApiData } from "./../services/youtubeAPI";
 
 const VideoContext = createContext();
 function VideoProvider({ children }) {
   const [isLoading, setIsLoading] = useState(false);
-  const [query, setQuery] = useState("");
+
   const [data, setData] = useState("");
 
-  console.log("d", query);
-  
+  console.log("d", data);
+
   const fetchData = useCallback(async function fetchData(query) {
     setIsLoading(true);
     try {
       const videos = await fetchApiData(query);
-      console.log(query);
       setData(videos);
     } catch (err) {
       setData({ Error: err });
@@ -29,9 +22,8 @@ function VideoProvider({ children }) {
     }
   }, []);
 
-  console.log(data);
   return (
-    <VideoContext.Provider value={{ isLoading, data, setQuery, fetchData }}>
+    <VideoContext.Provider value={{ isLoading, data, fetchData }}>
       {children}
     </VideoContext.Provider>
   );
