@@ -6,6 +6,7 @@ import SearchFeed from "./pages/SearchFeed";
 import PageNotFound from "./pages/PageNotFound";
 import { NavProvider } from "./context/NavContext";
 import { VideoProvider } from "./context/VideoContext";
+import FilterCategory from "./pages/FilterCategory";
 
 const router = createBrowserRouter([
   {
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
       {
         path: "/watch",
         element: <VideoFeed />,
+      },
+      {
+        path: "/:category",
+        element: <FilterCategory />,
       },
       {
         path: "/*",

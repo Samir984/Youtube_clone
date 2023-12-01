@@ -2,7 +2,7 @@ const BASE_URL = "https://youtube138.p.rapidapi.com";
 const options = {
   method: "GET",
   headers: {
-    "X-RapidAPI-Key": "af5d3a150emshef6aa77462e48ccp19d1e0jsnb540ffe95929",
+    "X-RapidAPI-Key": "4425e276b7msh37f97d10a64efe5p116987jsn2fb9a4e8d6b2",
     "X-RapidAPI-Host": "youtube138.p.rapidapi.com",
   },
 };

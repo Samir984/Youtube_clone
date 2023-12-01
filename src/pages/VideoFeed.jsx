@@ -6,7 +6,7 @@ import ReactPlayer from "react-player";
 function VideoFeed() {
   const [seatchParam] = useSearchParams();
   const videoId = seatchParam.get("id");
-  console.log(videoId);
+
   const { setMobileNav, setVideoPlayingPage } = useNavContext();
   useEffect(() => {
     setMobileNav(true);
