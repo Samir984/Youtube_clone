@@ -1,15 +1,15 @@
-const url = "https://youtube138.p.rapidapi.com";
+const BASE_URL = "https://youtube138.p.rapidapi.com";
 const options = {
   method: "GET",
   headers: {
-    "X-RapidAPI-Key": "05d9e66460mshc2da374a7da987ep13cdfbjsn016c8ca83793",
+    "X-RapidAPI-Key": "af5d3a150emshef6aa77462e48ccp19d1e0jsnb540ffe95929",
     "X-RapidAPI-Host": "youtube138.p.rapidapi.com",
   },
 };
 
-const fetchHomeData = async function () {
+const fetchApiData = async function (query) {
   try {
-    const res = await fetch(`${url}/home/?hl=en&gl=np`, options);
+    const res = await fetch(`${BASE_URL}/${query}`, options);
     if (!res.ok) throw new Error("fail to fetch data");
     const data = await res.json();
     return data;
@@ -18,13 +18,4 @@ const fetchHomeData = async function () {
   }
 };
 
-// export { fetchHomeData };
-
-// const fetchHomeData = async function () {
-//   const data = await new Promise((resolve, reject) =>
-//     setTimeout(() => resolve("samir is king"), 5000)
-//   );
-//   return data;
-// };
-
-export { fetchHomeData };
+export { fetchApiData };

@@ -1,10 +1,5 @@
-
 function PageNotFound() {
-  return (
-    <div>
-      pagenotfound
-    </div>
-  )
+  return <div>pagenotfound</div>;
 }
 
-export default PageNotFound
+export default PageNotFound;

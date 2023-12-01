@@ -5,6 +5,7 @@ import ChannelAvatar from "./ChannelAvatar";
 import { useState } from "react";
 
 import YoutubeToggle from "./YoutubeToggle";
+import { useNavigate } from "react-router-dom";
 function Header() {
   return (
     <div className="flex items-center px-[12px] sm:px-4 py-2 bg-white gap-2 justify-between sticky top-0 z-10">
@@ -18,10 +19,12 @@ function Header() {
 function SearchBar() {
   const [searchQuery, setSearchQuery] = useState("");
   const [seatchFoucs, setSearchFoucs] = useState(false);
+  const naviagte = useNavigate();
 
   function handelSubmitQuery(e) {
     e.preventDefault();
     if (!searchQuery) return;
+    naviagte(`/results?query=${searchQuery}`);
     setSearchQuery("");
   }
 

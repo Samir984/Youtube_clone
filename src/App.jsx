@@ -16,11 +16,11 @@ const router = createBrowserRouter([
         element: <AppFeed />,
       },
       {
-        path: "/search",
+        path: "/results",
         element: <SearchFeed />,
       },
       {
-        path: "/video",
+        path: "/watch",
         element: <VideoFeed />,
       },
       {
@@ -34,7 +34,7 @@ function App() {
   return (
     <NavProvider>
       <VideoProvider>
-        <RouterProvider router={router} />;
+        <RouterProvider router={router} />
       </VideoProvider>
     </NavProvider>
   );
