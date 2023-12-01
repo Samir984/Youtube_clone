@@ -9,28 +9,27 @@ export function formatNumber(number) {
 }
 
 export function formatTime(seconds) {
-  if(seconds===null){
-    return 'Live'
+  if (!seconds) {
+    return "Live";
   }
-    const hours = Math.floor(seconds / 3600);
-    const minutes = Math.floor((seconds % 3600) / 60);
-    const remainingSeconds = seconds % 60;
-  
-    const parts = [];
-  
-    if (hours > 0) {
-      const formattedHours = String(hours).padStart(2, '0');
-      parts.push(`${formattedHours}`);
-    }
-  
-    if (minutes > 0 || hours > 0) {
-      const formattedMinutes = String(minutes).padStart(2, '0');
-      parts.push(`${formattedMinutes}`);
-    }
-  
-    const formattedSeconds = String(remainingSeconds).padStart(2, '0');
-    parts.push(`${formattedSeconds}`);
-  
-    return parts.join(':');
+  const hours = Math.floor(seconds / 3600);
+  const minutes = Math.floor((seconds % 3600) / 60);
+  const remainingSeconds = seconds % 60;
+
+  const parts = [];
+
+  if (hours > 0) {
+    const formattedHours = String(hours).padStart(2, "0");
+    parts.push(`${formattedHours}`);
   }
-  
+
+  if (minutes > 0 || hours > 0) {
+    const formattedMinutes = String(minutes).padStart(2, "0");
+    parts.push(`${formattedMinutes}`);
+  }
+
+  const formattedSeconds = String(remainingSeconds).padStart(2, "0");
+  parts.push(`${formattedSeconds}`);
+
+  return parts.join(":");
+}

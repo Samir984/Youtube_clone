@@ -7,22 +7,28 @@ function NavProvider({ children }) {
   const [mobileNav, setMobileNav] = useState(() =>
     window.innerWidth < 1200 ? true : false
   );
+  const [videoPlayingPage, setVideoPlayingPage] = useState(false);
 
-  function handelResize() {
-    if (window.innerWidth < 1200) {
-      setMobileNav(true);
-    } else {
-      setMobileNav(false);
-    }
-  }
-  console.log(mobileNav);
-  useEffect(function () {
-    window.addEventListener("resize", handelResize);
+  useEffect(
+    function () {
+      function handelResize() {
+        if (videoPlayingPage) {
+          setMobileNav(true);
+        } else if (window.innerWidth < 1200) {
+          setMobileNav(true);
+        } else {
+          setMobileNav(false);
+        }
+      }
 
-    return () => {
-      window.removeEventListener("resize", handelResize);
-    };
-  }, []);
+      window.addEventListener("resize", handelResize);
+
+      return () => {
+        window.removeEventListener("resize", handelResize);
+      };
+    },
+    [videoPlayingPage]
+  );
 
   return (
     <NavContext.Provider
@@ -31,6 +37,7 @@ function NavProvider({ children }) {
         setIsExpand,
         mobileNav,
         setMobileNav,
+        setVideoPlayingPage,
       }}
     >
       {children}

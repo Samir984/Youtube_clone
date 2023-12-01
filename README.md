@@ -1,24 +1,14 @@
 # Youtube_clone
 
-<!-- ## Preview
-![Todo](https://github.com/Samir984/react_Todo/assets/106372023/083b43c4-11d6-4db0-8889-1503ba5543a5)
- -->
-<!-- 
-## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Preview
 
-- add,edit,delete todo list
-- filter to todo list as per task completed or incompleted filter
-- Toggle theme (light or dark) -->
+![YoutubeClone]()
 
- <!-- ## Contributing
-
-Anyone who is willing to contribute is more than welcome to do so. If you have any bugs/ideas, please feel free to open an [issue](https://github.com/Samir984/react_Todo/issues). To contribute, please fork the repository and submit a pull request. --> 
 
 ## Objective
 
-- Playing with React Router v6,Tailwind CSS
+- Playing with React Router,Tailwind CSS
+- Handeing Api with useEffect
 
 [Live Demo](https://youtubeclone984.netlify.app/)

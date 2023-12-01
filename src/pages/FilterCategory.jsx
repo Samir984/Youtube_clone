@@ -1,9 +1,17 @@
-import Loader from "../component/Loader";
+import { useEffect } from "react";
+import { useParams } from "react-router-dom";
 import { useVideo } from "../context/VideoContext";
+import Loader from "../component/Loader";
 import VideoItem from "../component/VideoItem";
 
-function AppFeed() {
-  const { isLoading, data } = useVideo();
+function FilterCategory() {
+  const { isLoading, fetchData, data } = useVideo();
+  const param = useParams();
+  useEffect(() => {
+    console.log(param.category);
+    fetchData(param.category);
+  }, [param.category, fetchData]);
+
   if (isLoading) return <Loader />;
   if (data?.Error) return <Loader message={data.Error} />;
   const { contents } = data;
@@ -19,6 +27,4 @@ function AppFeed() {
   );
 }
 
-export default AppFeed;
-
-// cursorNext
+export default FilterCategory;

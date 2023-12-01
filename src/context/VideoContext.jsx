@@ -1,31 +1,36 @@
 /* eslint-disable react/prop-types */
-import { createContext, useContext, useEffect, useState } from "react";
-import { fetchHomeData } from "../services/youtubeAPI";
+import {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
+import { fetchApiData } from "./../services/youtubeAPI";
 
 const VideoContext = createContext();
 function VideoProvider({ children }) {
-  const [loading, setLoading] = useState(false);
-  const [query, setQuery] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   const [data, setData] = useState("");
 
-  // console.log("d", data);
-  useEffect(() => {
-    fetchData();
-    async function fetchData() {
-      setLoading(true);
-      try {
-        const videos = await fetchHomeData();
-        setData(videos);
-      } catch (err) {
-        setData({ Error: err });
-      } finally {
-        setLoading(false);
-      }
+  const fetchData = useCallback(async function fetchData(query) {
+    setIsLoading(true);
+    try {
+      const videos = await fetchApiData(`search/?q=${query}&hl=en&gl=np`);
+      setData(videos);
+    } catch (err) {
+      setData({ Error: err });
+    } finally {
+      setIsLoading(false);
     }
   }, []);
 
+  useEffect(() => {
+    fetchData(`home/?hl=en&gl=np`);
+  }, [fetchData]);
+
   return (
-    <VideoContext.Provider value={{ loading, query, setQuery, data }}>
+    <VideoContext.Provider value={{ isLoading, data, fetchData }}>
       {children}
     </VideoContext.Provider>
   );

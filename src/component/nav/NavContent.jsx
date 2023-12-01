@@ -64,26 +64,49 @@ function NavContent({ isExpand, mobileNav }) {
   return (
     <ul className="flex flex-col mx-2 my-1 gap-1 cursor-pointer text-lg">
       {navs.map((nav, idx) => {
-        return (
-          <NavLink to={`${nav.link}`} key={idx}>
-            <li
-              className={`flex px-5 py-2  items-center  hover:bg-zinc-200 active:bg-zinc-200 rounded-lg ${
-                !isExpand && !mobileNav ? " flex-col" : "gap-6"
-              }`}
-            >
-              {nav.Icon}
-              <span
-                className={` whitespace-nowrap ${
-                  !isExpand ? "text-[11px] font-normal  " : ""
-                } ${idx > 3 && isExpand && "font-light"}`}
-              >
-                {nav.label}
-              </span>
-            </li>
-          </NavLink>
-        );
+        if (idx <= 4)
+          return (
+            <NavLink to={`${nav.link}`} key={idx}>
+              <NavItem
+                mobileNav={mobileNav}
+                isExpand={isExpand}
+                nav={nav}
+                idx={idx}
+              />
+            </NavLink>
+          );
+        else {
+          return (
+            <NavItem
+              key={idx}
+              mobileNav={mobileNav}
+              isExpand={isExpand}
+              nav={nav}
+              idx={idx}
+            />
+          );
+        }
       })}
     </ul>
+  );
+}
+
+function NavItem({ mobileNav, isExpand, nav, idx }) {
+  return (
+    <li
+      className={`flex px-5 py-2  items-center  hover:bg-zinc-200 active:bg-zinc-200 rounded-lg ${
+        !isExpand && !mobileNav ? " flex-col" : "gap-6"
+      }`}
+    >
+      {nav.Icon}
+      <span
+        className={` whitespace-nowrap ${
+          !isExpand ? "text-[11px] font-normal  " : ""
+        } ${idx > 3 && isExpand && "font-light"}`}
+      >
+        {nav.label}
+      </span>
+    </li>
   );
 }
 
